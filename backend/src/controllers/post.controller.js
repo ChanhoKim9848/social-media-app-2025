@@ -2,6 +2,8 @@ import asyncHandler from "express-async-handler";
 import Post from "../models/post.model.js";
 import User from "../models/user.model.js";
 import cloudinary from "../config/cloudinary.js";
+import Comment from "../models/comment.model.js";
+import Notification from "../models/notification.model.js";
 
 // get posts function
 export const getPosts = asyncHandler(async (req, res) => {
@@ -143,7 +145,7 @@ export const likePost = asyncHandler(async (req, res) => {
   if (!user || !post)
     return res.status(404).json({ error: "User or post not found" });
 
-//   boolean if user already likes the post
+  //   boolean if user already likes the post
   const isLiked = post.likes.includes(user._id);
 
   if (isLiked) {
@@ -168,7 +170,7 @@ export const likePost = asyncHandler(async (req, res) => {
     }
   }
 
-//   response like / unlike
+  //   response like / unlike
   res.status(200).json({
     message: isLiked ? "Post unliked successfully" : "Post liked successfully",
   });
@@ -179,15 +181,15 @@ export const deletePost = asyncHandler(async (req, res) => {
   const { userId } = getAuth(req);
   const { postId } = req.params;
 
-//   fetch user and user's post by user id and post id
+  //   fetch user and user's post by user id and post id
   const user = await User.findOne({ clerkId: userId });
   const post = await Post.findById(postId);
 
-//   user or post not found, error
+  //   user or post not found, error
   if (!user || !post)
     return res.status(404).json({ error: "User or post not found" });
 
-//   if user tries to delete the post that does now own, error
+  //   if user tries to delete the post that does now own, error
   if (post.user.toString() !== user._id.toString()) {
     return res
       .status(403)
@@ -200,6 +202,6 @@ export const deletePost = asyncHandler(async (req, res) => {
   // delete the post
   await Post.findByIdAndDelete(postId);
 
-//   response successful
+  //   response successful
   res.status(200).json({ message: "Post deleted successfully" });
 });
