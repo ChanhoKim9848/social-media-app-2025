@@ -17,3 +17,5 @@
 ##### [User routes - JUL/17/25](https://blog.naver.com/detol3953/223937058607)
 
 ##### [Post routes functionality - JUL/18/25](https://blog.naver.com/detol3953/223938071338)
+
+##### [comment functions - JUL/19/25](https://blog.naver.com/detol3953/223939778005)
