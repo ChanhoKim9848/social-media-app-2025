@@ -18,4 +18,6 @@
 
 ##### [Post routes functionality - JUL/18/25](https://blog.naver.com/detol3953/223938071338)
 
-##### [comment functions - JUL/19/25](https://blog.naver.com/detol3953/223939778005)
+##### [Comment functions - JUL/19/25](https://blog.naver.com/detol3953/223939778005)
+
+##### [Notifications and Arcjet - JUL/20/25](https://blog.naver.com/detol3953/223940275966)
