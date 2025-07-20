@@ -4,9 +4,12 @@ import { clerkMiddleware } from "@clerk/express";
 
 import userRoutes from "./routes/user.route.js";
 import postRoutes from "./routes/post.route.js";
+import commentRoutes from "./routes/comment.route.js";
+import notificationRoutes from "./routes/notification.route.js";
 
 import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
+import { arcjetMiddleware } from "./middleware/arcjet.middleware.js";
 
 // use express
 const app = express();
@@ -16,13 +19,19 @@ app.use(express.json());
 
 // clerk middleware for authentication
 app.use(clerkMiddleware());
+// arcjet middleware for security
+app.use(arcjetMiddleware);
 
 app.get("/", (req, res) => res.send("Hello from server"));
 
-// user route api
+// user route
 app.use("/api/users", userRoutes);
-// post route api
+// post route
 app.use("/api/posts", postRoutes);
+// comment route
+app.use("api/comments", commentRoutes);
+// notification route
+app.use("api/notifications", notificationRoutes);
 
 // error handling middleware
 app.use((err, req, res, next) => {
