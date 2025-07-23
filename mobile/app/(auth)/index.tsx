@@ -1,3 +1,4 @@
+import { useSocialAuth } from "@/hooks/useSocialAuth";
 import {
   ActivityIndicator,
   Image,
@@ -7,7 +8,7 @@ import {
 } from "react-native";
 
 export default function Index() {
-  const isLoading = false;
+  const { handleSocialAuth, isLoading } = useSocialAuth();
 
   return (
     <View className="flex-1 bg-white">
@@ -25,7 +26,8 @@ export default function Index() {
           <View className="top-3 flex-col gap-2">
             <TouchableOpacity
               className="flex-row items-center justify-center bg-white border border-gray-300 rounded-full py-3 px-6"
-              onPress={() => {}}
+              // o auth google
+              onPress={() => handleSocialAuth("oauth_google")}
               disabled={isLoading}
               // button shadow design
               style={{
@@ -59,7 +61,8 @@ export default function Index() {
             {/* Apple sign in button icon */}
             <TouchableOpacity
               className="flex-row items-center justify-center bg-white border border-gray-300 rounded-full py-3 px-6"
-              onPress={() => {}}
+              // o auth apple
+              onPress={() => handleSocialAuth("oauth_apple")}
               disabled={isLoading}
               // button shadow design
               style={{
@@ -101,7 +104,6 @@ export default function Index() {
             {", and "}
             <Text className="text-blue-500">Cookie Use</Text>.
           </Text>
-          
         </View>
       </View>
     </View>
