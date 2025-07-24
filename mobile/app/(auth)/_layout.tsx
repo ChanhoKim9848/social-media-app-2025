@@ -7,7 +7,7 @@ export default function AuthRoutesLayout() {
 
   //   if signed in, redirect to home page
   if (isSignedIn) {
-    return <Redirect href={"/"} />;
+    return <Redirect href={"/(tabs)"} />;
   }
 
   return <Stack />;
