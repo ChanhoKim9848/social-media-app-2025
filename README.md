@@ -29,3 +29,5 @@
 ##### [Google and Apple authentication with Clerk and OAuth - JUL/23/25](https://blog.naver.com/detol3953/223944357102)
 
 ##### [Tabs and logout setup - JUL/24/25](https://blog.naver.com/detol3953/223945380857)
+
+##### [Search screen - JUL/25/25](https://blog.naver.com/detol3953/223946455509)
