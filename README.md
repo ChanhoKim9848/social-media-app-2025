@@ -33,3 +33,5 @@
 ##### [Search screen - JUL/25/25](https://blog.naver.com/detol3953/223946455509)
 
 ##### [Message page - JUL/26/25](https://blog.naver.com/detol3953/223947640144)
+
+##### [Sync with the database and tanstack query - JUL/27/25](https://blog.naver.com/detol3953/223948559285)

@@ -10,7 +10,7 @@ const queryClient = new QueryClient();
 export default function RootLayout() {
   return (
     <ClerkProvider tokenCache={tokenCache}>
-      {/* entire application wrapped with react query  */}
+      {/* entire application wrapped with tanstack react query  */}
       <QueryClientProvider client={queryClient}>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(auth)" />
