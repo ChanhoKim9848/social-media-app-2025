@@ -40,14 +40,14 @@ export default function Index() {
             >
               {isLoading ? (
                 // if loading state, button shows loading sign
-                <ActivityIndicator size="small" color="#4285F4" />
+                <ActivityIndicator size="small" color="#73C883" />
               ) : (
                 //  Google sign in button icon
                 <View className="flex-row items-center justify-center">
                   <Image
                     source={require("../../assets/images/google.png")}
                     // icon location and size
-                    className="size-10 mr-3"
+                    className="size-9 mr-3"
                     resizeMode="contain"
                   />
                   {/* Google sign in button text */}
@@ -98,11 +98,11 @@ export default function Index() {
           {/* Terms and Privacy */}
           <Text className="text-center text-gray-500 text-xs leading-4 mt-6 px-2">
             By signing up, you agree to our{" "}
-            <Text className="text-blue-500">Terms</Text>
+            <Text className="text-green-500">Terms</Text>
             {", "}
-            <Text className="text-blue-500">Privacy Policy</Text>
+            <Text className="text-green-500">Privacy Policy</Text>
             {", and "}
-            <Text className="text-blue-500">Cookie Use</Text>.
+            <Text className="text-green-500">Cookie Use</Text>.
           </Text>
         </View>
       </View>

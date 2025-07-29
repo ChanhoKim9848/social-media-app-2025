@@ -7,7 +7,7 @@ import { useAuth } from "@clerk/clerk-expo";
 
 
 // where the app is deployed
-const API_BASE_URL = "https://social-media-app-2025-chi.vercel.app/api"
+const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL;
 
 // this will basically create an authenticated api, pass the token into our headers
 export const createApiClient = (getToken: () => Promise<string | null>): AxiosInstance => {

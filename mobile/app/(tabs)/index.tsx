@@ -2,13 +2,12 @@ import PostComposer from "@/components/PostComposer";
 import SignOutButton from "@/components/SignOutButton";
 import { useUserSync } from "@/hooks/useUserSync";
 import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
-import { RefreshControl, ScrollView, Text, View } from "react-native";
+import {  ScrollView,  View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const HomeScreen = () => {
-  
   useUserSync();
+
   return (
     // put screen into safe area on the screen
     <SafeAreaView className="flex-1">

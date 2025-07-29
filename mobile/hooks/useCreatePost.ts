@@ -6,6 +6,7 @@ import * as ImagePicker from "expo-image-picker";
 import { useApiClient } from "../utils/api";
 
 export const useCreatePost = () => {
+  
   const [content, setContent] = useState("");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const api = useApiClient();
@@ -45,7 +46,9 @@ export const useCreatePost = () => {
       queryClient.invalidateQueries({ queryKey: ["posts"] });
       Alert.alert("Success", "Post created successfully!");
     },
-    onError: () => {
+    onError: (error) => {
+      console.log(error);
+      
       Alert.alert("Error", "Failed to create post. Please try again.");
     },
   });
@@ -57,7 +60,10 @@ export const useCreatePost = () => {
 
     if (permissionResult.status !== "granted") {
       const source = useCamera ? "camera" : "photo library";
-      Alert.alert("Permission needed", `Please grant permission to access your ${source}`);
+      Alert.alert(
+        "Permission needed",
+        `Please grant permission to access your ${source}`
+      );
       return;
     }
 
@@ -79,7 +85,10 @@ export const useCreatePost = () => {
 
   const createPost = () => {
     if (!content.trim() && !selectedImage) {
-      Alert.alert("Empty Post", "Please write something or add an image before posting!");
+      Alert.alert(
+        "Empty Post",
+        "Please write something or add an image before posting!"
+      );
       return;
     }
 
