@@ -21,7 +21,7 @@ router.get("/profile/:username", getUserProfile);
 // route sync user function after checking login
 router.post("/sync", protectRoute, syncUser);
 // route current user after checking login
-router.post("/me", protectRoute, getCurrentUser);
+router.get("/me", protectRoute, getCurrentUser);
 // route update profile function after checking login
 // whenever user goes to profile page, they need to update profile
 router.put("/profile", protectRoute, updateProfile);
