@@ -39,3 +39,5 @@
 ##### [Create post, delete messages - JUL/28/25](https://blog.naver.com/detol3953/223949750258)
 
 ##### [Clerk sync fix - JUL/29/25](https://blog.naver.com/detol3953/223951021116)
+
+##### [Home screen - fetch posts, post likes and comments - JUL/30/25](https://blog.naver.com/detol3953/223952037021)
