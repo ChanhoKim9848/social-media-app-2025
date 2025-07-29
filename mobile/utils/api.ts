@@ -5,8 +5,12 @@
 import axios , {AxiosInstance} from "axios"
 import { useAuth } from "@clerk/clerk-expo";
 
+// import dotenv
+import dotenv from 'dotenv';
 
+dotenv.config()
 // where the app is deployed
+// env expo url imported from .env
 const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL;
 
 // this will basically create an authenticated api, pass the token into our headers
