@@ -29,9 +29,9 @@ app.use("/api/users", userRoutes);
 // post route
 app.use("/api/posts", postRoutes);
 // comment route
-app.use("api/comments", commentRoutes);
+app.use("/api/comments", commentRoutes);
 // notification route
-app.use("api/notifications", notificationRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 // error handling middleware
 app.use((err, req, res, next) => {

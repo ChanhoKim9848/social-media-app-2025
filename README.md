@@ -10,6 +10,10 @@
 
 #####
 
+### To-Do List
+##### Infinity scroll
+##### message functionality
+
 ### Project Blog
 
 ##### [Database and, server and client side setup - JUL/16/25](https://blog.naver.com/detol3953/223935903819)

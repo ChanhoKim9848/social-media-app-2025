@@ -34,7 +34,9 @@ export const useComments = () => {
       postId: string;
       content: string;
     }) => {
+      console.log("📤 Sending comment to API:", { postId, content });
       const response = await commentApi.createComment(api, postId, content);
+      console.log("✅ Response from API:", response.data);
       return response.data; // Return response data for further use if needed
     },
 

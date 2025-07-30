@@ -97,7 +97,7 @@ const CommentsModal = ({ selectedPost, onClose }: CommentsModalProps) => {
           {selectedPost.comments.map((comment) => (
             <View key={comment._id} className="border-b border-gray-100 bg-white p-4">
               <View className="flex-row">
-                {/* Commenter's profile picture */}
+                {/* Commenter's profile pict  ure */}
                 <Image
                   source={{ uri: comment.user.profilePicture }}
                   className="w-10 h-10 rounded-full mr-3"
@@ -145,7 +145,7 @@ const CommentsModal = ({ selectedPost, onClose }: CommentsModalProps) => {
                 {/* Submit comment button */}
                 <TouchableOpacity
                   className={`px-4 py-2 rounded-lg self-start ${
-                    commentText.trim() ? "text-green-500" : "bg-gray-300"
+                    commentText.trim() ? "bg-green-500" : "bg-gray-300"
                   }`}                           // Blue button active only if there is text
                   onPress={() => createComment(selectedPost._id)}  // Call createComment with post id
                   disabled={isCreatingComment || !commentText.trim()} // Disable button if loading or empty input
