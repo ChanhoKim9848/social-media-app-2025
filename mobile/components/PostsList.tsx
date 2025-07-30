@@ -33,7 +33,7 @@ const PostsList = ({ username }: { username?: string }) => {
   if (isLoading) {
     return (
       <View className="p-8 items-center">
-        <ActivityIndicator size="large" color="#1DA1F2" />
+        <ActivityIndicator size="large" color="#73C883" />
         <Text className="text-gray-500 mt-2">Loading posts...</Text>
       </View>
     );
