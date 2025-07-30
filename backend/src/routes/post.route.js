@@ -26,6 +26,6 @@ router.post("/", protectRoute, upload.single("image"), createPost);
 // route like function
 router.post("/:postId/like", protectRoute, likePost);
 // route delete function
-router.delete("/:postId/like", protectRoute, deletePost);
+router.delete("/:postId", protectRoute, deletePost);
 
 export default router;
