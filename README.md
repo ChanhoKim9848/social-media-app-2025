@@ -13,6 +13,8 @@
 ### To-Do List
 ##### Infinity scroll
 ##### message functionality
+##### Delete button, date on comment
+
 
 ### Project Blog
 
@@ -45,3 +47,5 @@
 ##### [Clerk sync fix - JUL/29/25](https://blog.naver.com/detol3953/223951021116)
 
 ##### [Home screen - fetch posts, post likes and comments - JUL/30/25](https://blog.naver.com/detol3953/223952037021)
+
+##### [Fixed api calls (delete post, commenting) - JUL/31/25](https://blog.naver.com/detol3953/223953321175)
