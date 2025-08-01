@@ -78,7 +78,7 @@ const NotificationCard = ({ notification, onDelete }: NotificationCardProps) => 
             <View className="flex-1"> {/* Left side for text content */}
               <Text className="text-gray-900 text-base leading-5 mb-1"> {/* Main notification message */}
                 <Text className="font-semibold"> {/* Display sender's name in bold */}
-                  {notification.from.firstName} {notification.from.lastName}
+                  {notification.from.firstName}{" "}{notification.from.lastName}
                 </Text>
                 <Text className="text-gray-500"> @{notification.from.username}</Text> {/* Display username */}
               </Text>
