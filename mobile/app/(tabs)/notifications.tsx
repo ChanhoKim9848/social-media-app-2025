@@ -54,13 +54,13 @@ const NotificationsScreen = () => {
         showsVerticalScrollIndicator={false} // Hide scroll bar
         refreshControl={
           // Pull-to-refresh to refetch notifications
-          <RefreshControl refreshing={isRefetching} onRefresh={refetch} tintColor={"#1DA1F2"} />
+          <RefreshControl refreshing={isRefetching} onRefresh={refetch} tintColor={"#73C883"} />
         }
       >
         {/* Show loading indicator while data is being fetched */}
         {isLoading ? (
           <View className="flex-1 items-center justify-center p-8">
-            <ActivityIndicator size="large" color="#1DA1F2" /> {/* Spinning loader */}
+            <ActivityIndicator size="large" color="#73C883" /> {/* Spinning loader */}
             <Text className="text-gray-500 mt-4">Loading notifications...</Text>
           </View>
         ) : notifications.length === 0 ? (

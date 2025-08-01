@@ -14,6 +14,7 @@
 ##### Infinity scroll
 ##### message functionality
 ##### Delete button, date on comment
+##### Search posts functionality
 
 
 ### Project Blog
