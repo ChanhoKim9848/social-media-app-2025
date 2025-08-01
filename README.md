@@ -49,3 +49,5 @@
 ##### [Home screen - fetch posts, post likes and comments - JUL/30/25](https://blog.naver.com/detol3953/223952037021)
 
 ##### [Fixed api calls (delete post, commenting) - JUL/31/25](https://blog.naver.com/detol3953/223953321175)
+
+##### [Notification screen and functionality - AUG/01/25](https://blog.naver.com/detol3953/223955506642)
