@@ -15,6 +15,7 @@
 ##### message functionality
 ##### Delete button, date on comment
 ##### Search posts functionality
+##### Dark / Light mode
 
 
 ### Project Blog
