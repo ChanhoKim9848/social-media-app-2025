@@ -24,7 +24,7 @@ interface EditProfileModalProps {
   isUpdating: boolean;                                // Loading state during saving
 }
 
-// Functional component definition with props destructuring
+// Functional component definition with props destructuring.
 const EditProfileModal = ({
   formData,
   isUpdating,
@@ -34,7 +34,7 @@ const EditProfileModal = ({
   updateFormField,
 }: EditProfileModalProps) => {
 
-  // When save button is pressed, call save and then close the modal
+  // When save button is pressed, call save and then close the modal.
   const handleSave = () => {
     saveProfile();
     onClose();
