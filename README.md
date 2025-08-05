@@ -16,6 +16,8 @@
 ##### Delete button, date on comment
 ##### Search posts functionality
 ##### Dark / Light mode
+##### Clerk problem
+##### Layout fix should be fixed (tabs)
 
 
 ### Project Blog
