@@ -1,55 +1,33 @@
-import { View, TextInput, ScrollView, Text, TouchableOpacity } from "react-native";
-import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather } from "@expo/vector-icons";
-
-
-// 
+import { View, TextInput, ScrollView, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const TRENDING_TOPICS = [
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-  { topic: "#React-Native", tweets: "1252K" },
-
+  { topic: "#ReactNative", tweets: "125K" },
+  { topic: "#TypeScript", tweets: "89K" },
+  { topic: "#WebDevelopment", tweets: "234K" },
+  { topic: "#AI", tweets: "567K" },
+  { topic: "#TechNews", tweets: "98K" },
 ];
 
 const SearchScreen = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
-      {/* Header search bar */}
+      {/* HEADER */}
       <View className="px-4 py-3 border-b border-gray-100">
         <View className="flex-row items-center bg-gray-100 rounded-full px-4 py-3">
-          {/* Search Icon on the search bar */}
-          <Feather name="search" size={20} color="#73C883" />
-          {/* Text input layout */}
+          <Feather name="search" size={20} color="#657786" />
           <TextInput
-            placeholder="Search"
+            placeholder="Search Twitter"
             className="flex-1 ml-3 text-base"
-            placeholderTextColor="#73C883"
+            placeholderTextColor="#657786"
           />
         </View>
       </View>
 
-      {/* list of topics and screen can be scroll down */}
-      {/* vertical scroll indicator right side of the screen removed */}
-      <ScrollView className="flex-1" showsVerticalScrollIndicator={false} >
+      <ScrollView className="flex-1">
         <View className="p-4">
-          <Text className="text-xl font-bold text-gray-900 mb-4">
-            Trending for you
-          </Text>
+          <Text className="text-xl font-bold text-gray-900 mb-4">Trending for you</Text>
           {TRENDING_TOPICS.map((item, index) => (
             <TouchableOpacity key={index} className="py-3 border-b border-gray-100">
               <Text className="text-gray-500 text-sm">Trending in Technology</Text>
