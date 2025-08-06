@@ -5,19 +5,39 @@
 ##### Clerk, Arcjet, CodeRabbit
 
 #####
+.env in backend
+CLERK_SECRET_KEY=
+CLERK_PUBLISHABLE_KEY=
+
+CLOUDINARY_API_SECRET_KEY=
+PORT=5001
+
+NODE_ENV=development
+MONGO_URI=
+
+ARCJET_ENV=development
+ARCJET_KEY=
+
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+
+ADD IP ADDRESS in Network Access in MongoDB 0.0.0.0/0
+
+.env in mobile (frontend)
+EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY
 
 #####
 
 #####
 
 ### To-Do List
-##### Infinity scroll
-##### message functionality
-##### Delete button, date on comment
-##### Search posts functionality
+##### Update Profile image and banner
+##### Delete Comment
+##### Follow / Unfollow
+##### Implement Search screen
 ##### Dark / Light mode
-##### Clerk problem
-##### Layout fix should be fixed (tabs)
+##### Implement message with Firebase, Supabase or Convex.
 
 
 ### Project Blog
