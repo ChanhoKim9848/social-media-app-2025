@@ -7,21 +7,28 @@ import {
   ActivityIndicator,
   ScrollView,
   TextInput,
+  Image,
 } from "react-native";
+
 
 // Define the props the modal accepts, with types for TypeScript
 interface EditProfileModalProps {
-  isVisible: boolean;                                 // Controls modal visibility
-  onClose: () => void;                                // Function to close the modal
-  formData: {                                          // Form values for editing
+  isVisible: boolean; // Controls modal visibility
+  onClose: () => void; // Function to close the modal
+  formData: {
+    // Form values for editing
     firstName: string;
     lastName: string;
     bio: string;
     location: string;
+
+    // banner image and profile picture form data
+    bannerImage: string;
+    profilePicture: string;
   };
-  saveProfile: () => void;                            // Function to save profile data
+  saveProfile: () => void; // Function to save profile data
   updateFormField: (field: string, value: string) => void; // Updates form fields
-  isUpdating: boolean;                                // Loading state during saving
+  isUpdating: boolean; // Loading state during saving
 }
 
 // Functional component definition with props destructuring.
@@ -33,7 +40,6 @@ const EditProfileModal = ({
   saveProfile,
   updateFormField,
 }: EditProfileModalProps) => {
-
   // When save button is pressed, call save and then close the modal.
   const handleSave = () => {
     saveProfile();
@@ -42,7 +48,11 @@ const EditProfileModal = ({
 
   return (
     // Native modal with slide animation and pageSheet style (bottom sheet look)
-    <Modal visible={isVisible} animationType="slide" presentationStyle="pageSheet">
+    <Modal
+      visible={isVisible}
+      animationType="slide"
+      presentationStyle="pageSheet"
+    >
       {/* Header with Cancel, Title, and Save */}
       <View className="flex-row items-center justify-between px-4 py-3 border-b border-gray-100">
         <TouchableOpacity onPress={onClose}>
@@ -66,6 +76,26 @@ const EditProfileModal = ({
 
       {/* Scrollable content so the form works on small screens */}
       <ScrollView className="flex-1 px-4 py-6">
+        {/* Banner Preview */}
+        <View className="w-full h-40 mb-6">
+          <Image
+            source={{
+              uri:
+                formData.bannerImage ||
+                "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop",
+            }}
+            className="w-full h-full rounded-lg"
+            resizeMode="cover"
+          />
+        </View>
+
+        {/* Profile Picture Preview */}
+        <View className="items-center mb-6 -mt-20 z-10">
+          <Image
+            source={{ uri: formData.profilePicture }}
+            className="w-32 h-32 rounded-full border-4 border-white bg-white"
+          />
+        </View>
         <View className="space-y-4">
           {/* First Name input */}
           <View>
