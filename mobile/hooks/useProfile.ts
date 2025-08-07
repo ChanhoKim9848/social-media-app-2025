@@ -27,6 +27,10 @@ export const useProfile = () => {
     lastName: "",
     bio: "",
     location: "",
+
+    // banner image and profile pictrue
+    bannerImage: "",
+    profilePicture: "",
   });
 
   const { currentUser } = useCurrentUser(); // Get current user data
@@ -55,6 +59,10 @@ export const useProfile = () => {
         lastName: currentUser.lastName || "",
         bio: currentUser.bio || "",
         location: currentUser.location || "",
+
+        // banner image and profile picture in edit profile
+        bannerImage: currentUser.bannerImage || "",
+        profilePicture: currentUser.profilePicture || "",
       });
     }
     setIsEditModalVisible(true); // Show the modal
@@ -67,12 +75,12 @@ export const useProfile = () => {
 
   // Return everything the component will need from this hook
   return {
-    isEditModalVisible,                       // For controlling modal visibility
-    formData,                                 // Current editable profile data
-    openEditModal,                            // Function to open modal and load form
+    isEditModalVisible, // For controlling modal visibility
+    formData, // Current editable profile data
+    openEditModal, // Function to open modal and load form
     closeEditModal: () => setIsEditModalVisible(false), // Function to close modal
     saveProfile: () => updateProfileMutation.mutate(formData), // Save form data to API
-    updateFormField,                          // Function to update form fields
+    updateFormField, // Function to update form fields
     isUpdating: updateProfileMutation.isPending, // Show spinner during save
     refetch: () => queryClient.invalidateQueries({ queryKey: ["authUser"] }), // Force re-fetch of user
   };
