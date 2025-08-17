@@ -23,8 +23,16 @@ router.post("/sync", protectRoute, syncUser);
 // route current user after checking login
 router.get("/me", protectRoute, getCurrentUser);
 // route update profile function after checking login
-// whenever user goes to profile page, they need to update profile
-router.put("/profile", protectRoute, updateProfile);
+import multer from "multer";
+
+const upload = multer({ dest: "uploads/" });
+
+router.put(
+  "/update",
+  protectRoute,
+  upload.fields([{ name: "profilePicture" }, { name: "bannerImage" }]),
+  updateProfile
+);
 // route follow user function after checking login
 router.post("/follow/:targetUserId", protectRoute, followUser);
 

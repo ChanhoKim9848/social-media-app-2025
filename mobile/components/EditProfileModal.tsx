@@ -11,6 +11,7 @@ import {
   Alert,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import axios from "axios"; // For API calls
 
 // Define the props the modal accepts, with types for TypeScript
 interface EditProfileModalProps {
@@ -31,6 +32,31 @@ interface EditProfileModalProps {
   updateFormField: (field: string, value: string) => void; // Updates form fields
   isUpdating: boolean; // Loading state during saving
 }
+
+const CLOUDINARY_UPLOAD_PRESET = process.env.EXPO_PUBLIC_CLOUDINARY_UPLOAD_PRESET!;
+const CLOUDINARY_CLOUD_NAME = process.env.EXPO_PUBLIC_CLOUDINARY_CLOUD_NAME!;
+
+// Helper to upload to Cloudinary
+const uploadToCloudinary = async (uri: string) => {
+  const formData = new FormData();
+  formData.append("file", {
+    uri,
+    type: "image/jpeg",
+    name: "upload.jpg",
+  } as any);
+  formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
+
+  const data = await res.json();
+  return data.secure_url;
+};
 
 // Functional component definition with props destructuring.
 const EditProfileModal = ({
@@ -113,11 +139,50 @@ const EditProfileModal = ({
       { cancelable: true }
     );
   };
+
   // When save button is pressed, call save and then close the modal.
-  const handleSave = () => {
+  const handleSave = async () => {
+  try {
+    const form = new FormData();
+    form.append("firstName", formData.firstName);
+    form.append("lastName", formData.lastName);
+    form.append("bio", formData.bio);
+    form.append("location", formData.location);
+
+    // Upload profile picture to Cloudinary if it's local
+    let profileUrl = formData.profilePicture;
+    if (profileUrl && profileUrl.startsWith("file")) {
+      profileUrl = await uploadToCloudinary(profileUrl);
+    }
+
+    // Upload banner image to Cloudinary if it's local
+    let bannerUrl = formData.bannerImage;
+    if (bannerUrl && bannerUrl.startsWith("file")) {
+      bannerUrl = await uploadToCloudinary(bannerUrl);
+    }
+
+    // Send final Cloudinary URLs to your backend
+    await axios.put(
+      `${process.env.EXPO_PUBLIC_API_URL}/users/update`,
+      {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        bio: formData.bio,
+        location: formData.location,
+        profilePicture: profileUrl,
+        bannerImage: bannerUrl,
+      },
+      { withCredentials: true }
+    );
+
     saveProfile();
     onClose();
-  };
+  } catch (error) {
+    console.error(error);
+    Alert.alert("Error", "Failed to update profile.");
+  }
+};
+
 
   return (
     // Native modal with slide animation and pageSheet style (bottom sheet look)

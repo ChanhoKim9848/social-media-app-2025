@@ -2,6 +2,7 @@ import { clerkClient, getAuth } from "@clerk/express";
 import User from "../models/user.model.js";
 import asyncHandler from "express-async-handler";
 import Notification from "../models/notification.model.js";
+import cloudinary from "cloudinary";
 
 // get user profile function
 export const getUserProfile = asyncHandler(async (req, res) => {
@@ -17,15 +18,32 @@ export const getUserProfile = asyncHandler(async (req, res) => {
 
 // update user profile function
 export const updateProfile = asyncHandler(async (req, res) => {
-  // clerk id,
   const { userId } = getAuth(req);
 
-  // once user is found and userId is matched, find user in the user collection and update profile
-  // pass req.body whatever user wants to update
-  const user = await User.findOneAndUpdate({ clerkId: userId }, req.body, {
+  const updates = { ...req.body };
+
+  // If profilePicture is uploaded
+  if (req.files?.profilePicture?.[0]) {
+    const uploadRes = await cloudinary.uploader.upload(
+      req.files.profilePicture[0].path,
+      { folder: "profile_pictures" }
+    );
+    updates.profilePicture = uploadRes.secure_url;
+  }
+
+  // If bannerImage is uploaded
+  if (req.files?.bannerImage?.[0]) {
+    const uploadRes = await cloudinary.uploader.upload(
+      req.files.bannerImage[0].path,
+      { folder: "banner_images" }
+    );
+    updates.bannerImage = uploadRes.secure_url;
+  }
+
+  const user = await User.findOneAndUpdate({ clerkId: userId }, updates, {
     new: true,
   });
-  // successful response
+
   res.status(200).json({ user });
 });
 
