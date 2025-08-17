@@ -1,40 +1,38 @@
 import express from "express";
 import {
-    followUser,
+  followUser,
   getCurrentUser,
   getUserProfile,
   syncUser,
   updateProfile,
 } from "../controllers/user.controller.js";
 import { protectRoute } from "../middleware/auth.middleware.js";
+import upload from "../middleware/uploads.middleware.js";
 
 const router = express.Router();
 
 // public route
-
 // route get user profile function
 router.get("/profile/:username", getUserProfile);
 
-
 // protected route
-
 // route sync user function after checking login
 router.post("/sync", protectRoute, syncUser);
 // route current user after checking login
 router.get("/me", protectRoute, getCurrentUser);
 // route update profile function after checking login
-import multer from "multer";
-
-const upload = multer({ dest: "uploads/" });
 
 router.put(
   "/update",
   protectRoute,
-  upload.fields([{ name: "profilePicture" }, { name: "bannerImage" }]),
+  upload.fields([
+    { name: "profilePicture", maxCount: 1 },
+    { name: "bannerImage", maxCount: 1 },
+  ]),
   updateProfile
 );
+
 // route follow user function after checking login
 router.post("/follow/:targetUserId", protectRoute, followUser);
-
 
 export default router;
